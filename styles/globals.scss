@@ -16,19 +16,17 @@ a {
 $background-color: #36393F;
 
 .main {
+	height: 100vh;
     background-color: $background-color;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
 }
 
 .container {
-    min-height: 100vh;
-    padding: 0 0.5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
     height: 100vh;
     background: url('../public/images/TBA.png') center no-repeat;
-    background-size: min(500px, 80%);
+    background-size: max(200px, 25%);
     animation: pulse 3s linear infinite;
 }
 
