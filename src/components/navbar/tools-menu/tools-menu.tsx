@@ -5,6 +5,7 @@ import {useRouter} from "next/router"
 import React, {useState} from "react"
 import {login, logout} from "../../../oauth/auth"
 import ToolsIcon from "../tools-icon/tools-icon"
+import styles from "./tools-menu.module.scss"
 
 export default function ToolsMenu() {
 	const [connectedUser, setConnectedUser]: [User, (user: User) => void] = useState(null)
@@ -22,11 +23,13 @@ export default function ToolsMenu() {
 				<MenuItem>
 					{
 						!connectedUser ?
-							<label onClick={() => login(router)} style={{display: "inline-flex", width: "100%"}}>
-								<UnlockIcon w={6} h={6} /><label style={{textAlign: "center", width: "100%", paddingRight: "20px"}}>Connexion</label>
+							<label onClick={() => login(router)} className={styles.menuItem}>
+								<UnlockIcon w={6} h={6} /><label className={styles.menuLabel}>Connexion</label>
 							</label>
 							:
-							<label onClick={() => logout(router, () => setConnectedUser(null), () => handleClose())}><LockIcon w={6} h={6} />Déconnexion</label>
+							<label onClick={() => logout(router, () => setConnectedUser(null), () => handleClose())} className={styles.menuItem}>
+								<LockIcon w={6} h={6} /><label className={styles.menuLabel}>Déconnexion</label>
+							</label>
 					}
 				</MenuItem>
 			</MenuList>
