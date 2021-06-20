@@ -1,25 +1,15 @@
 import {
 	Drawer,
 	DrawerBody,
-	DrawerFooter,
 	DrawerHeader,
 	DrawerOverlay,
 	DrawerContent,
 	DrawerCloseButton,
-	Button,
-	Radio,
-	RadioGroup,
-	Stack,
-	useDisclosure,
-	useStyles,
-	useTheme,
 } from "@chakra-ui/react"
 import {useRouter} from 'next/router'
 import React from 'react'
 
-const drawerWidth = 240
 const sidebarColor = "#202225"
-const navbarColor = "#2F3136"
 
 export default function Sidebar(props) {
 	const router = useRouter()
@@ -27,11 +17,12 @@ export default function Sidebar(props) {
 		<div>
 			<Drawer placement="left" onClose={props.closeSidebar} isOpen={props.isOpen || false}>
 				<DrawerOverlay />
-				<DrawerContent>
+				<DrawerContent bgColor={sidebarColor} color="white">
 					<DrawerCloseButton />
-					<DrawerHeader borderBottomWidth="1px">Basic Drawer</DrawerHeader>
+					<DrawerHeader borderBottomWidth="1px">The Brain Academy</DrawerHeader>
 					<DrawerBody>
-						<button onClick={() => router.push("https://brain-academy.fr/wiki/botc/")}>Wiki BotC</button>
+						<div>{">"} L'association</div>
+						{">"} <button onClick={() => router.push("https://brain-academy.fr/wiki/botc/")}>Wiki - Blood on the Clocktower</button>
 					</DrawerBody>
 				</DrawerContent>
 			</Drawer>
