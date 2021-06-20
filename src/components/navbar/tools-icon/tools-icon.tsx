@@ -25,13 +25,13 @@ export default function ToolsIcon({connectedUser, setConnectedUser, handleClick}
 		}
 	}, [])
 
-	return <React.Fragment>
-		{!!connectedUser && <label style={{display: "flex", marginRight: "20px", textAlign: "end", color: "white"}}>Bienvenue, {connectedUser.username}</label>}
+	return <span className={styles.settingsIcon}>
+		{!!connectedUser && <label className={styles.iconLabel}>Bienvenue, {connectedUser.username}</label>}
 		<MenuButton onClick={handleClick}>
 			<img src={!!connectedUser ? `https://cdn.discordapp.com/avatars/${connectedUser.id}/${connectedUser.avatar}.png` : "/brain-academy-logo.ico"}
 				alt="TBA-logo"
 				className={styles.roundLogo}
 			/>
 		</MenuButton>
-	</React.Fragment>
+	</span>
 }
