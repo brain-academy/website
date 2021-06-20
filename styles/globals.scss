@@ -28,6 +28,9 @@ $background-color: #36393F;
     background: url('../public/images/TBA.png') center no-repeat;
     background-size: max(200px, 25%);
     animation: pulse 3s linear infinite;
+	position: absolute;
+	width: 100%;
+	z-index: 10;
 }
 
 @keyframes pulse {
