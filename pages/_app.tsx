@@ -5,7 +5,7 @@ import Sidebar from '../src/components/sidebar/sidebar'
 import '../styles/globals.scss'
 
 export default function MyApp({Component, pageProps}) {
-	
+
 	const [isSidebarOpen, setSidebarOpen] = useState(false)
 
 	const toggleSidebar = () => setSidebarOpen(!isSidebarOpen)
@@ -15,9 +15,10 @@ export default function MyApp({Component, pageProps}) {
 		<ChakraProvider>
 			<Sidebar isOpen={isSidebarOpen} closeSidebar={closeSidebar}>
 				<Navbar toggleSidebar={toggleSidebar} />
-				<Component {...pageProps} />
+				<div className="container">
+					<Component {...pageProps} />
+				</div>
 			</Sidebar>
 		</ChakraProvider>
-		<div className="container"></div>
 	</div>
 }
