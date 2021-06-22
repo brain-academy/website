@@ -1,5 +1,5 @@
 import {LockIcon, UnlockIcon} from "@chakra-ui/icons"
-import {useToast, UseToastOptions} from "@chakra-ui/react"
+import {MenuItem, useToast, UseToastOptions} from "@chakra-ui/react"
 import axios from "axios"
 import {User} from "discord.js"
 import router from "next/router"
@@ -9,7 +9,7 @@ import styles from "./connection-button.module.scss"
 
 const tokenUrl = 'https://discord.com/api/users/@me'
 
-export default function ConnectionButton({connectedUser, setConnectedUser, handleClose}: {connectedUser: User, setConnectedUser: (user: User) => void, handleClose: () => void}) {
+export default function ConnectionButton({connectedUser, setConnectedUser}: {connectedUser: User, setConnectedUser: (user: User) => void}) {
 
 	const toast = useToast()
 	const notify = (
@@ -36,20 +36,16 @@ export default function ConnectionButton({connectedUser, setConnectedUser, handl
 
 	const handleLogin = () => login(router)
 
-	const handleLogout = () => logout(router, () => setConnectedUser(null), () => handleClose())
+	const handleLogout = () => logout(router, () => setConnectedUser(null))
 		.then(() => notify({title: "Vous êtes maintenant déconnecté."}))
 		.catch(() => notify({title: "Erreur lors de la déconnexion...", status: "error"}))
 
-	return <React.Fragment>
-		{
-			!connectedUser ?
-				<label onClick={handleLogin} className={styles.menuItem}>
-					<UnlockIcon w={6} h={6} /><label className={styles.menuLabel}>Connexion</label>
-				</label>
-				:
-				<label onClick={handleLogout} className={styles.menuItem}>
-					<LockIcon w={6} h={6} /><label className={styles.menuLabel}>Déconnexion</label>
-				</label>
-		}
-	</React.Fragment>
+	return !connectedUser ?
+		<MenuItem onClick={handleLogin} icon={<UnlockIcon w={6} h={6} />}>
+			<label className={styles.menuLabel}>Connexion</label>
+		</MenuItem>
+		:
+		<MenuItem onClick={handleLogout} icon={<LockIcon w={6} h={6} />}>
+			<label className={styles.menuLabel}>Déconnexion</label>
+		</MenuItem >
 }
