@@ -16,7 +16,9 @@ export default function MyApp({Component, pageProps}) {
 			<Sidebar isOpen={isSidebarOpen} closeSidebar={closeSidebar}>
 				<Navbar toggleSidebar={toggleSidebar} />
 				<div className="container">
-					<Component {...pageProps} />
+					<div>
+						<Component {...pageProps} />
+					</div>
 				</div>
 			</Sidebar>
 		</ChakraProvider>
