@@ -1,11 +1,14 @@
 import {
-	Drawer,
-	DrawerBody,
-	DrawerHeader,
-	DrawerOverlay,
-	DrawerContent,
-	DrawerCloseButton,
+	Accordion,
+	AccordionButton,
+	AccordionIcon,
+	AccordionItem,
+	AccordionPanel,
+	Box, Drawer,
+	DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader,
+	DrawerOverlay
 } from "@chakra-ui/react"
+import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React from 'react'
 
@@ -21,8 +24,35 @@ export default function Sidebar(props) {
 					<DrawerCloseButton />
 					<DrawerHeader borderBottomWidth="1px">The Brain Academy</DrawerHeader>
 					<DrawerBody>
-						<div>{">"} L'association</div>
-						{">"} <button onClick={() => router.push("https://brain-academy.fr/wiki/botc/")}>Wiki - Blood on the Clocktower</button>
+						<Accordion allowToggle allowMultiple>
+							<AccordionItem>
+								<h2>
+									<AccordionButton>
+										<Box flex="1" textAlign="left">
+											L'association
+										</Box>
+										<AccordionIcon />
+									</AccordionButton>
+								</h2>
+								<AccordionPanel pb={4}>
+									<Link href="https://www.helloasso.com/associations/the-brain-academy/adhesions/adhesion-the-brain-academy/">Adhésion</Link>
+								</AccordionPanel>
+							</AccordionItem>
+
+							<AccordionItem>
+								<h2>
+									<AccordionButton>
+										<Box flex="1" textAlign="left">
+											Ressources
+										</Box>
+										<AccordionIcon />
+									</AccordionButton>
+								</h2>
+								<AccordionPanel pb={4}>
+									<Link href="https://brain-academy.fr/wiki/botc/">Wiki - Blood on the Clocktower</Link>
+								</AccordionPanel>
+							</AccordionItem>
+						</Accordion>
 					</DrawerBody>
 				</DrawerContent>
 			</Drawer>
