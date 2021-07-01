@@ -35,7 +35,12 @@ export default function Sidebar(props) {
 									</AccordionButton>
 								</h2>
 								<AccordionPanel pb={4}>
-									<Link href="https://www.helloasso.com/associations/the-brain-academy/adhesions/adhesion-the-brain-academy/">Adhésion</Link>
+									<AccordionItem>
+										<Link href="https://www.helloasso.com/associations/the-brain-academy/adhesions/adhesion-the-brain-academy/">Adhésion</Link>
+									</AccordionItem>
+									<AccordionItem>
+										<Link href="https://www.helloasso.com/associations/the-brain-academy/formulaires/1/widget">Faire un don</Link>
+									</AccordionItem>
 								</AccordionPanel>
 							</AccordionItem>
 
