@@ -12,15 +12,13 @@ import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React from 'react'
 
-const sidebarColor = "#202225"
-
 export default function Sidebar(props) {
 	const router = useRouter()
 	return (
 		<div>
 			<Drawer placement="left" onClose={props.closeSidebar} isOpen={props.isOpen || false}>
 				<DrawerOverlay />
-				<DrawerContent bgColor={sidebarColor} color="white">
+				<DrawerContent>
 					<DrawerCloseButton />
 					<DrawerHeader borderBottomWidth="1px">The Brain Academy</DrawerHeader>
 					<DrawerBody>
