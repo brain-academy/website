@@ -10,7 +10,31 @@ import {
 } from "@chakra-ui/react"
 import Link from 'next/link'
 import {useRouter} from 'next/router'
-import React from 'react'
+import React, {ReactElement} from 'react'
+import navigationItems, {NavigationItem} from "../navigation-items"
+
+function reduceNavigationItems({title, subItems, link}: NavigationItem, index: number): ReactElement {
+	return !subItems ?
+		(<>
+			<AccordionItem key={title} pl={2 * index} paddingBlock={2}>
+				<Link href={link}>{title}</Link>
+			</AccordionItem>
+		</>)
+		:
+		(<>
+			<AccordionItem key={title} >
+				<AccordionButton>
+					<Box flex="1" textAlign="left">
+						{title}
+					</Box>
+					<AccordionIcon />
+				</AccordionButton>
+				<AccordionPanel key={title} pb={0}>
+					{subItems.map(item => reduceNavigationItems(item, index + 1))}
+				</AccordionPanel>
+			</AccordionItem>
+		</>)
+}
 
 export default function Sidebar(props) {
 	const router = useRouter()
@@ -23,36 +47,7 @@ export default function Sidebar(props) {
 					<DrawerHeader borderBottomWidth="1px">The Brain Academy</DrawerHeader>
 					<DrawerBody>
 						<Accordion allowToggle allowMultiple>
-							<AccordionItem>
-								<AccordionButton>
-									<Box flex="1" textAlign="left">
-										L'association
-									</Box>
-									<AccordionIcon />
-								</AccordionButton>
-								<AccordionPanel pb={0}>
-									<AccordionItem pl={4} paddingBlock={2}>
-										<Link href="https://www.helloasso.com/associations/the-brain-academy/adhesions/adhesion-the-brain-academy/">Adhésion</Link>
-									</AccordionItem>
-									<AccordionItem pl={4} paddingBlock={2}>
-										<Link href="https://www.helloasso.com/associations/the-brain-academy/formulaires/1/widget">Faire un don</Link>
-									</AccordionItem>
-								</AccordionPanel>
-							</AccordionItem>
-
-							<AccordionItem>
-								<AccordionButton>
-									<Box flex="1" textAlign="left">
-										Ressources
-									</Box>
-									<AccordionIcon />
-								</AccordionButton>
-								<AccordionPanel pb={0}>
-									<AccordionItem pl={4} paddingBlock={2}>
-										<Link href="https://brain-academy.fr/wiki/botc/">Wiki - Blood on the Clocktower</Link>
-									</AccordionItem>
-								</AccordionPanel>
-							</AccordionItem>
+							{navigationItems.map(item => reduceNavigationItems(item, 0))}
 						</Accordion>
 					</DrawerBody>
 				</DrawerContent>

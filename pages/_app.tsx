@@ -13,14 +13,13 @@ export default function MyApp({Component, pageProps}) {
 
 	return <div className="main">
 		<ChakraProvider>
-			<Sidebar isOpen={isSidebarOpen} closeSidebar={closeSidebar}>
-				<Navbar toggleSidebar={toggleSidebar} />
-				<div className="container">
-					<div>
-						<Component {...pageProps} />
-					</div>
+			<Sidebar isOpen={isSidebarOpen} closeSidebar={closeSidebar} />
+			<Navbar toggleSidebar={toggleSidebar} />
+			<div className="container">
+				<div>
+					<Component {...pageProps} />
 				</div>
-			</Sidebar>
+			</div>
 		</ChakraProvider>
 	</div>
 }
