@@ -1,55 +1,41 @@
 import {
-	Accordion,
-	AccordionButton,
-	AccordionIcon,
-	AccordionItem,
-	AccordionPanel,
 	Box, Drawer,
-	DrawerBody, DrawerCloseButton, DrawerContent, DrawerHeader,
-	DrawerOverlay
+	DrawerBody, DrawerContent, DrawerOverlay,
+	Flex, Stack,
+	Switch,
+	useColorMode
 } from "@chakra-ui/react"
-import Link from 'next/link'
 import {useRouter} from 'next/router'
 import React, {ReactElement} from 'react'
+import theme from "../../../styles/theme"
 import navigationItems, {NavigationItem} from "../navigation-items"
 
-function reduceNavigationItems({title, subItems, link}: NavigationItem, index: number): ReactElement {
-	return !subItems ?
-		(<>
-			<AccordionItem key={title} pl={2 * index} paddingBlock={2}>
-				<Link href={link}>{title}</Link>
-			</AccordionItem>
-		</>)
-		:
-		(<>
-			<AccordionItem key={title} >
-				<AccordionButton>
-					<Box flex="1" textAlign="left">
-						{title}
-					</Box>
-					<AccordionIcon />
-				</AccordionButton>
-				<AccordionPanel key={title} pb={0}>
-					{subItems.map(item => reduceNavigationItems(item, index + 1))}
-				</AccordionPanel>
-			</AccordionItem>
-		</>)
+function sidebarItem({title, link, icon}: NavigationItem, index: number): ReactElement {
+	return (
+		<Flex paddingTop={4} alignItems="center">
+			{icon({w: 5, h: 5, marginRight: 6})}
+			<Box
+				fontSize={20}>
+				{title}
+			</Box>
+		</Flex>
+	)
 }
 
 export default function Sidebar(props) {
 	const router = useRouter()
+	const {colorMode, toggleColorMode} = useColorMode()
 	return (
 		<>
 			<Drawer placement="left" onClose={props.closeSidebar} isOpen={props.isOpen || false}>
 				<DrawerOverlay />
-				<DrawerContent>
-					<DrawerCloseButton />
-					<DrawerHeader borderBottomWidth="1px">The Brain Academy</DrawerHeader>
+				<DrawerContent padding={5}>
 					<DrawerBody>
-						<Accordion allowToggle allowMultiple>
-							{navigationItems.map(item => reduceNavigationItems(item, 0))}
-						</Accordion>
+						<Stack>
+							{navigationItems.map(item => sidebarItem(item, 0))}
+						</Stack>
 					</DrawerBody>
+					<Switch size={theme.media} onChange={toggleColorMode} />
 				</DrawerContent>
 			</Drawer>
 			{props.children}

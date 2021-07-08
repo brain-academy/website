@@ -6,6 +6,6 @@ const config: ThemeConfig = {
 }
 const theme = extendTheme({
 	config,
-	media: "xs"
+	media: "lg"
 })
 export default theme

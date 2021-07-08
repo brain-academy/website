@@ -1,10 +1,9 @@
 import {HamburgerIcon} from '@chakra-ui/icons'
-import {Flex, Spacer, Switch, useColorMode} from '@chakra-ui/react'
+import {Flex, Spacer} from '@chakra-ui/react'
 import {default as React} from 'react'
 import ToolsMenu from './tools-menu/tools-menu'
 
 export default function Navbar(props: {toggleSidebar: () => void}) {
-	const {colorMode, toggleColorMode} = useColorMode()
 
 	return (
 		<Flex
@@ -16,7 +15,6 @@ export default function Navbar(props: {toggleSidebar: () => void}) {
 			<HamburgerIcon w={8} h={8}
 				style={{cursor: "pointer"}} onClick={props.toggleSidebar} />
 			<Spacer />
-			<Switch size="lg" paddingRight="40px" onChange={toggleColorMode} />
 			<ToolsMenu />
 		</Flex>
 	)
