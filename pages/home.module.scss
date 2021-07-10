@@ -1,0 +1,32 @@
+.container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	overflow: hidden;
+	height: calc(100vh - 67px);
+	width: 100vw;
+	background: url("../public/images/TBA.png") center no-repeat;
+	background-size: max(200px, 25%);
+	animation: pulse 3s linear infinite;
+}
+
+@keyframes pulse {
+	0% {
+		transform: scale(0.9);
+	}
+	80% {
+		transform: scale(0.9);
+	}
+	85% {
+		transform: scale(1);
+	}
+	90% {
+		transform: scale(0.9);
+	}
+	95% {
+		transform: scale(0.95);
+	}
+	100% {
+		transform: scale(0.9);
+	}
+}

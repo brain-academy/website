@@ -11,15 +11,11 @@ export default function MyApp({Component, pageProps}) {
 	const toggleSidebar = () => setSidebarOpen(!isSidebarOpen)
 	const closeSidebar = () => setSidebarOpen(false)
 
-	return <div className="main">
+	return <>
 		<ChakraProvider>
 			<Sidebar isOpen={isSidebarOpen} closeSidebar={closeSidebar} />
 			<Navbar toggleSidebar={toggleSidebar} />
-			<div className="container">
-				<div>
-					<Component {...pageProps} />
-				</div>
-			</div>
+			<Component {...pageProps} />
 		</ChakraProvider>
-	</div>
+	</>
 }

@@ -1,12 +1,10 @@
 import {Drawer, DrawerBody, DrawerContent, DrawerOverlay, Stack, Switch, useColorMode} from "@chakra-ui/react"
-import {useRouter} from "next/router"
 import React from "react"
 import theme from "../../../styles/theme"
 import navigationItems from "../navigation-items"
 import SidebarItem from "./sidebar-item/sidebar-item"
 
 export default function Sidebar(props) {
-	const router = useRouter()
 	const {colorMode, toggleColorMode} = useColorMode()
 	return (
 		<>
