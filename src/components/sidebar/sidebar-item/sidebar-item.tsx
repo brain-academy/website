@@ -1,6 +1,6 @@
 import {Box, Button} from "@chakra-ui/react"
 import React, {ReactElement} from "react"
-import {NavigationItem} from "../../navigation-items"
+import {NavigationItem} from "../../../navigation-items"
 import Link from "next/link"
 
 export default function SidebarItem(

@@ -1,7 +1,7 @@
 import {Drawer, DrawerBody, DrawerContent, DrawerOverlay, Stack, Switch, useColorMode} from "@chakra-ui/react"
 import React from "react"
 import theme from "../../../styles/theme"
-import navigationItems from "../navigation-items"
+import navigationItems from "../../navigation-items"
 import SidebarItem from "./sidebar-item/sidebar-item"
 
 export default function Sidebar(props) {
