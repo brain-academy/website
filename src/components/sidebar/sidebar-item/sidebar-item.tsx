@@ -4,7 +4,7 @@ import {NavigationItem} from "../../../navigation-items"
 import Link from "next/link"
 
 export default function SidebarItem(
-	{item: {title, icon, link}}: {item: NavigationItem}
+	{item: {title, icon, link}, closeSidebar}: {item: NavigationItem, closeSidebar: () => void}
 ): ReactElement {
 	return (
 		<Link href={link}>
@@ -14,6 +14,7 @@ export default function SidebarItem(
 				borderRadius={10}
 				justifyContent="left"
 				paddingLeft={8}
+				onClick={closeSidebar}
 			>
 				{icon({w: 5, h: 5, marginRight: 6})}
 				<Box
