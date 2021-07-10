@@ -1,26 +1,9 @@
-import {
-	Box, Drawer,
-	DrawerBody, DrawerContent, DrawerOverlay,
-	Flex, Stack,
-	Switch,
-	useColorMode
-} from "@chakra-ui/react"
-import {useRouter} from 'next/router'
-import React, {ReactElement} from 'react'
+import {Drawer, DrawerBody, DrawerContent, DrawerOverlay, Stack, Switch, useColorMode} from "@chakra-ui/react"
+import {useRouter} from "next/router"
+import React from "react"
 import theme from "../../../styles/theme"
-import navigationItems, {NavigationItem} from "../navigation-items"
-
-function sidebarItem({title, link, icon}: NavigationItem, index: number): ReactElement {
-	return (
-		<Flex paddingTop={4} alignItems="center">
-			{icon({w: 5, h: 5, marginRight: 6})}
-			<Box
-				fontSize={20}>
-				{title}
-			</Box>
-		</Flex>
-	)
-}
+import navigationItems from "../navigation-items"
+import SidebarItem from "./sidebar-item/sidebar-item"
 
 export default function Sidebar(props) {
 	const router = useRouter()
@@ -32,7 +15,7 @@ export default function Sidebar(props) {
 				<DrawerContent padding={5}>
 					<DrawerBody>
 						<Stack>
-							{navigationItems.map(item => sidebarItem(item, 0))}
+							{navigationItems.map(item => <SidebarItem key={item.title} item={item} index={0} />)}
 						</Stack>
 					</DrawerBody>
 					<Switch size={theme.media} onChange={toggleColorMode} />
