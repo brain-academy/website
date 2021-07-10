@@ -10,10 +10,12 @@ export interface NavigationItem {
 const navigationItems: NavigationItem[] = [
 	{
 		title: "Home",
+		link: "/",
 		icon: (props) => <ArrowBackIcon {...props} />
 	},
 	{
-		title: "L'association",
+		title: "L'asso",
+		link: "/asso",
 		icon: (props) => <StarIcon {...props} />
 		// subItems: [
 		// 	{
@@ -28,6 +30,7 @@ const navigationItems: NavigationItem[] = [
 	},
 	{
 		title: "Wiki",
+		link: "https://brain-academy.fr/wiki/botc/",
 		icon: (props) => <EditIcon {...props} />
 	}
 ]

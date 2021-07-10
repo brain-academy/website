@@ -15,7 +15,7 @@ export default function Sidebar(props) {
 				<DrawerContent padding={5}>
 					<DrawerBody>
 						<Stack>
-							{navigationItems.map(item => <SidebarItem key={item.title} item={item} index={0} />)}
+							{navigationItems.map(item => <SidebarItem key={item.title} item={item} />)}
 						</Stack>
 					</DrawerBody>
 					<Switch size={theme.media} onChange={toggleColorMode} />
