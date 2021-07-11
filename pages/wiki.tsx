@@ -1,4 +1,4 @@
-import {Button, SimpleGrid, Image, Box} from "@chakra-ui/react"
+import {Button, Image, SimpleGrid} from "@chakra-ui/react"
 import Link from "next/link"
 import React from "react"
 

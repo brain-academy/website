@@ -7,8 +7,8 @@ export default function Navbar(props: {toggleSidebar: () => void}) {
 
 	return (
 		<Flex
-			justifyContent="space-between"
-			alignItems="center"
+			justify="space-between"
+			align="center"
 			padding="10px 20px 10px 20px"
 			borderBottom="solid 1px"
 		>
