@@ -1,20 +1,22 @@
-import {MenuButton} from '@chakra-ui/react'
+import {Flex, Image, MenuButton} from '@chakra-ui/react'
 import {User} from 'discord.js'
 import React from "react"
-import styles from './tools-icon.module.scss'
 
 interface ToolsIconProps {
 	connectedUser: User
 }
 
 export default function ToolsIcon({connectedUser}: ToolsIconProps) {
-	return <span className={styles.settingsIcon}>
-		{!!connectedUser && <label className={styles.iconLabel}>Bienvenue, {connectedUser.username}</label>}
+	return <Flex alignItems="center" justifyContent="space-between">
+		{!!connectedUser && <Flex marginRight={6}>Bienvenue, {connectedUser.username}</Flex>}
 		<MenuButton>
-			<img src={!!connectedUser ? `https://cdn.discordapp.com/avatars/${connectedUser.id}/${connectedUser.avatar}.png` : "/brain-academy-logo.ico"}
+			<Image
+				src={!!connectedUser ? `https://cdn.discordapp.com/avatars/${connectedUser.id}/${connectedUser.avatar}.png` : "/brain-academy-logo.ico"}
 				alt="TBA-logo"
-				className={styles.roundLogo}
+				borderRadius="50%"
+				h={10}
+				w={10}
 			/>
 		</MenuButton>
-	</span>
+	</Flex>
 }

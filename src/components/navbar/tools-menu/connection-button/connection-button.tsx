@@ -1,11 +1,10 @@
 import {LockIcon, UnlockIcon} from "@chakra-ui/icons"
-import {MenuItem, useToast, UseToastOptions} from "@chakra-ui/react"
+import {Center, MenuItem, useToast, UseToastOptions} from "@chakra-ui/react"
 import axios from "axios"
 import {User} from "discord.js"
 import router from "next/router"
 import React, {useEffect} from "react"
 import {login, logout} from "../../../../oauth/auth"
-import styles from "./connection-button.module.scss"
 
 const tokenUrl = 'https://discord.com/api/users/@me'
 
@@ -41,11 +40,7 @@ export default function ConnectionButton({connectedUser, setConnectedUser}: {con
 		.catch(() => notify({title: "Erreur lors de la déconnexion...", status: "error"}))
 
 	return !connectedUser ?
-		<MenuItem onClick={handleLogin} icon={<UnlockIcon w={6} h={6} />}>
-			<label className={styles.menuLabel}>Connexion</label>
-		</MenuItem>
+		<MenuItem onClick={handleLogin} icon={<UnlockIcon w={6} h={6} />}>Connexion</MenuItem>
 		:
-		<MenuItem onClick={handleLogout} icon={<LockIcon w={6} h={6} />}>
-			<label className={styles.menuLabel}>Déconnexion</label>
-		</MenuItem >
+		<MenuItem onClick={handleLogout} icon={<LockIcon w={6} h={6} />}>Déconnexion</MenuItem >
 }
