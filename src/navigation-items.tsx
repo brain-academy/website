@@ -30,7 +30,7 @@ const navigationItems: NavigationItem[] = [
 	},
 	{
 		title: "Wiki",
-		link: "https://brain-academy.fr/wiki/botc/",
+		link: "/wiki",
 		icon: (props) => <EditIcon {...props} />
 	}
 ]
