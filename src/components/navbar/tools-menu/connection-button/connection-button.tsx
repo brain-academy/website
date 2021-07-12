@@ -1,15 +1,17 @@
 import {LockIcon, UnlockIcon} from "@chakra-ui/icons"
-import {Center, MenuItem, useToast, UseToastOptions} from "@chakra-ui/react"
+import {MenuItem, useToast, UseToastOptions} from "@chakra-ui/react"
 import axios from "axios"
 import {User} from "discord.js"
 import router from "next/router"
-import React, {useEffect} from "react"
+import React, {useContext, useEffect} from "react"
+import {ConnectedUserContext} from "../../../../context/connected-user-context"
 import {login, logout} from "../../../../oauth/auth"
 
 const tokenUrl = 'https://discord.com/api/users/@me'
 
-export default function ConnectionButton({connectedUser, setConnectedUser}: {connectedUser: User, setConnectedUser: (user: User) => void}) {
+export default function ConnectionButton() {
 
+	const {connectedUser, setConnectedUser} = useContext(ConnectedUserContext)
 	const toast = useToast()
 	const notify = (
 		{
