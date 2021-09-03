@@ -11,7 +11,7 @@ export default function SidebarCard() {
 		justify="space-between" align="center"
 		bg={colorMode === "light" ? "gray.300" : "gray.500"}
 	>
-		<Flex fontWeight="bold">{connectedUser?.username}</Flex>
+		<Flex fontWeight="bold">{connectedUser?.discord.username}</Flex>
 		<UserIcon />
 	</Flex>
 }

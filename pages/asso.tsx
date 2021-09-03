@@ -14,7 +14,6 @@ export async function getServerSideProps() {
 
 export default function Asso({data: users}: {data: {name: string, discord: User}[]}) {
 	const {connectedUser} = useContext(ConnectedUserContext)
-	console.log({connectedUser})
 	return <>
 		<SimpleGrid columns={3} minChildWidth={50} maxW={500} spacing={8} m={8}>
 			<ButtonLink href="https://www.helloasso.com/associations/the-brain-academy/adhesions/adhesion-the-brain-academy" leftIcon={<FaStar />} bg="green.500" h={50}>

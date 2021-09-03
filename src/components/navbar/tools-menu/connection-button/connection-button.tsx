@@ -1,7 +1,6 @@
 import {LockIcon, UnlockIcon} from "@chakra-ui/icons"
 import {MenuItem, useToast, UseToastOptions} from "@chakra-ui/react"
 import axios from "axios"
-import {User} from "discord.js"
 import router from "next/router"
 import React, {useContext, useEffect} from "react"
 import {ConnectedUserContext} from "../../../../context/connected-user-context"
@@ -27,8 +26,16 @@ export default function ConnectionButton() {
 		const [accessToken, tokenType] = [fragment.get('access_token'), fragment.get('token_type')]
 
 		if (!!accessToken) {
-			axios.get(tokenUrl, {headers: {authorization: `${tokenType} ${accessToken}`}})
-				.then(({data}: {data: User}) => setConnectedUser(data))
+			Promise.all(
+				[
+					axios.get(tokenUrl, {headers: {authorization: `${tokenType} ${accessToken}`}}),
+					axios.get("https://brain-academy.fr/api/users")
+				]
+			)
+				.then(([{data}, {data: users}]) => {
+					const user = users.find(({name}) => name === data.username)
+					setConnectedUser(user)
+				})
 				.then(() => notify({title: "Connexion réussie !"}))
 				.catch(() => notify({title: "Connexion échouée...", status: "error"}))
 				.catch(console.error)
