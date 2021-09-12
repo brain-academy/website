@@ -1,4 +1,4 @@
-import {ArrowBackIcon, ChatIcon, EditIcon, StarIcon} from "@chakra-ui/icons"
+import {ArrowBackIcon, CalendarIcon, ChatIcon, EditIcon, StarIcon} from "@chakra-ui/icons"
 import React from "react"
 import User from "./domain/user"
 
@@ -20,6 +20,11 @@ function navigationItems(user?: User): NavigationItem[] {
 			title: "L'asso",
 			link: "/asso",
 			icon: (props) => <StarIcon {...props} />
+		},
+		{
+			title: "Calendrier",
+			link: "/calendrier",
+			icon: (props) => <CalendarIcon {...props} />
 		},
 		{
 			title: "Wiki",
