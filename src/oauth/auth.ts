@@ -5,7 +5,7 @@ const codeUrlDev = "https://discord.com/api/oauth2/authorize?client_id=818238353
 
 
 export function login(router: NextRouter) {
-	return router.push(codeUrlDev)
+	return router.push(codeUrl)
 }
 
 export function logout(router: NextRouter, ...callback: (() => void)[]) {
