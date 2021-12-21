@@ -5,7 +5,7 @@ import React from "react"
 export default function Wiki() {
 	return (
 		<SimpleGrid columns={3} minChildWidth={200} spacing={8} m={8}>
-			<Link href="https://brain-academy.fr/wiki/botc/">
+			<Link href="https://brain-academy.github.io/botc-wiki/">
 				<Button h={200}>
 					<Image
 						w="180px"
