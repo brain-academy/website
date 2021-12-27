@@ -3,10 +3,10 @@
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
-		"dev": "next dev",
+		"dev": "next dev -p 8080",
 		"build": "next build",
-		"start": "next start",
-		"export": "next export"
+		"start": "next start -p 8080",
+		"export": "next export -p 8080"
 	},
 	"dependencies": {
 		"@chakra-ui/icons": "^1.0.15",
